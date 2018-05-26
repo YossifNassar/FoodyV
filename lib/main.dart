@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
-
-//import 'package:flutter/foundation.dart';
 import 'package:camera/camera.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -11,7 +9,7 @@ List<CameraDescription> cameras;
 Future<Null> main() async {
   cameras = await availableCameras();
   runApp(new MaterialApp(
-    title: 'Navigation Basics',
+    title: 'FoodyV',
     home: new FirstScreen(),
   ));
 }
@@ -32,8 +30,6 @@ class _CameraAppState extends State<CameraApp> {
   CameraController controller;
   String _filePath;
 
-  String timestamp() => new DateTime.now().millisecondsSinceEpoch.toString();
-
   void _showCameraException(CameraException e) {
     print("${e.code}, ${e.description}");
   }
@@ -46,13 +42,16 @@ class _CameraAppState extends State<CameraApp> {
     final Directory extDir = await getApplicationDocumentsDirectory();
     final String dirPath = '${extDir.path}/Pictures/flutter_test';
     await new Directory(dirPath).create(recursive: true);
-    final String filePath = '$dirPath/${timestamp()}.jpg';
+    final String filePath = '$dirPath/tmp.jpg';
 
     if (controller.value.isTakingPicture) {
       // A capture is already pending, do nothing.
       return;
     }
-
+    File file = new File(filePath);
+    if(file.existsSync()) {
+      file.deleteSync();
+    }
     try {
       await controller.takePicture(filePath);
     } on CameraException catch (e) {
@@ -84,7 +83,7 @@ class _CameraAppState extends State<CameraApp> {
   @override
   void initState() {
     super.initState();
-    controller = new CameraController(cameras[0], ResolutionPreset.medium);
+    controller = new CameraController(cameras[0], ResolutionPreset.high);
     controller.initialize().then((_) {
       if (!mounted) {
         return;
@@ -128,12 +127,18 @@ class ImageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Widget imageWidget;
+    if(filePath == null) {
+      imageWidget = new Text('Please take a photo');
+    } else {
+      imageWidget = new Image.file(new File(filePath));
+    }
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Second Screen"),
+        title: new Text("Image Screen"),
       ),
       body: new Center(
-        child: new Image.file(new File(filePath)),
+        child: imageWidget,
       ),
     );
   }
