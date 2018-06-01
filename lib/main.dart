@@ -8,37 +8,22 @@ import 'httpclient.dart';
 import 'package:google_sign_in/google_sign_in.dart'
     show GoogleSignIn;
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart' show rootBundle,ByteData;
 
 List<CameraDescription> cameras;
+vision.VisionApi visionApi;
 
-Future<Null> main() async {
-  cameras = await availableCameras();
-  final _googleSignIn = new GoogleSignIn(
-    scopes: [
-      'email',
-      'https://www.googleapis.com/auth/contacts.readonly',
-      'https://www.googleapis.com/auth/cloud-vision'
-    ],
-  );
+Future<ByteData> _getImageBytes(String image) async{
+  return await rootBundle.load(image);
+}
 
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  var googleUser = await _googleSignIn.signIn();
-  var googleAuth = await googleUser.authentication;
-  var user = await _auth.signInWithGoogle(
-    accessToken: googleAuth.accessToken,
-    idToken: googleAuth.idToken,
-  );
-  print("signed in " + user.displayName);
-
-  var authHeaders = await googleUser.authHeaders;
-  var visionApi = vision.VisionApi(new GoogleHttpClient(authHeaders));
+Future<Null> _annotateImage(String filePath) async {
+  var bytes = await _getImageBytes(filePath);
   var imp = visionApi.images;
   var request = vision.AnnotateImageRequest()
-  ..features = [vision.Feature()..type = "DOCUMENT_TEXT_DETECTION"];
-  var imageSource = vision.ImageSource()
-  ..gcsImageUri = "gs://bucket-name-123/abbey_road.jpg";
+    ..features = [vision.Feature()..type = "DOCUMENT_TEXT_DETECTION"];
   var image = vision.Image()
-  ..source = imageSource;
+    ..contentAsBytes = bytes.buffer.asUint8List().cast();
   request.image = image;
   var annotateRequest = vision.BatchAnnotateImagesRequest()
     ..requests = [request];
@@ -48,9 +33,34 @@ Future<Null> main() async {
       print(txt.description);
     });
   });
+}
+
+Future<Null> main() async {
+  cameras = await availableCameras();
+
+  final _googleSignIn = new GoogleSignIn(
+    scopes: [
+      'email',
+      'https://www.googleapis.com/auth/contacts.readonly',
+      'https://www.googleapis.com/auth/cloud-vision'
+    ],
+  );
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  var googleUser = await _googleSignIn.signIn();
+  var googleAuth = await googleUser.authentication;
+  var user = await _auth.signInWithGoogle(
+    accessToken: googleAuth.accessToken,
+    idToken: googleAuth.idToken,
+  );
+  print("signed in ${user.displayName}");
+
+
+  var authHeaders = await googleUser.authHeaders;
+  visionApi = vision.VisionApi(new GoogleHttpClient(authHeaders));
+
   runApp(new MaterialApp(
     title: 'FoodyV',
-    home: new FirstScreen(user?.displayName),
+    home: new FirstScreen("User: ${user.displayName}"),
   ));
 }
 
@@ -118,6 +128,7 @@ class _CameraAppState extends State<CameraApp> {
 
     _filePath = filePath;
     _navigateToImageScreen();
+    _annotateImage(_filePath);
   }
 
   Widget _cameraFloatingWidget() {
@@ -140,7 +151,7 @@ class _CameraAppState extends State<CameraApp> {
   @override
   void initState() {
     super.initState();
-    controller = new CameraController(cameras[0], ResolutionPreset.high);
+    controller = new CameraController(cameras[0], ResolutionPreset.low);
     controller.initialize().then((_) {
       if (!mounted) {
         return;
@@ -184,6 +195,7 @@ class ImageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(filePath);
     Widget imageWidget;
     if(filePath == null) {
       imageWidget = new Text('Please take a photo');
