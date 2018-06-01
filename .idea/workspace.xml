@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="313baa57-83c9-4ba7-9d4c-0f4b5371c748" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/android/app/google-services.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/httpclient.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,10 +20,34 @@
       <file leaf-file-name="main.dart" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/main.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="55" column="26" selection-start-line="55" selection-start-column="26" selection-end-line="55" selection-end-column="26" />
+            <state relative-caret-position="213">
+              <caret line="45" column="7" selection-start-line="45" selection-start-column="7" selection-end-line="45" selection-end-column="7" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="v1.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/dev/flutter/.pub-cache/hosted/pub.dartlang.org/googleapis-0.50.2/lib/vision/v1.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3182">
+              <caret line="1414" column="6" selection-start-line="1414" selection-start-column="6" selection-end-line="1414" selection-end-column="6" />
+              <folding>
+                <element signature="e#2194#2959#0" />
+                <element signature="e#7878#9373#0" />
+                <element signature="e#10284#11020#0" />
+                <element signature="e#11067#13669#0" />
+                <element signature="e#13748#14350#0" />
+                <element signature="e#18499#20234#0" />
+                <element signature="e#20379#21359#0" />
+                <element signature="e#21456#22688#0" />
+                <element signature="e#22795#23412#0" />
+                <element signature="e#23486#24387#0" />
+                <element signature="e#24462#25507#0" />
+                <element signature="e#25582#26447#0" />
+                <element signature="e#26539#27183#0" />
               </folding>
             </state>
           </provider>
@@ -42,7 +56,7 @@
       <file leaf-file-name="google_sign_in.dart" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/dev/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in-3.0.3+1/lib/google_sign_in.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1585">
+            <state relative-caret-position="93">
               <caret line="74" column="2" selection-start-line="74" selection-start-column="2" selection-end-line="74" selection-end-column="2" />
             </state>
           </provider>
@@ -57,20 +71,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="io_client.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/dev/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.11.3+16/lib/src/io_client.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="309">
+              <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="firebase_auth.dart" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/dev/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth-0.5.10/lib/firebase_auth.dart">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="397">
               <caret line="246" column="53" selection-start-line="246" selection-start-column="53" selection-end-line="246" selection-end-column="53" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gradle-wrapper.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="5" column="69" selection-start-line="5" selection-start-column="69" selection-end-line="5" selection-end-column="69" />
             </state>
           </provider>
         </entry>
@@ -93,27 +107,9 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainActivity.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/android/app/src/main/kotlin/com/foodyv/foodyv/MainActivity.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="google-services.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/android/app/google-services.json">
           <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="pubspec.yaml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pubspec.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
-            </state>
-          </provider>
         </entry>
       </file>
     </leaf>
@@ -314,7 +310,7 @@
       <window_info id="Build Variants" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info active="true" anchor="bottom" id="Dart Analysis" order="7" visible="true" weight="0.32907993" />
+      <window_info anchor="bottom" id="Dart Analysis" order="7" weight="0.32907993" />
       <window_info anchor="right" id="Flutter Outline" order="3" />
       <window_info anchor="bottom" id="Logcat" order="7" weight="0.32975152" />
       <window_info id="Capture Tool" order="2" />
@@ -323,14 +319,14 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.249833" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Device File Explorer" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.73136336" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.5406313" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.50369376" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.21490933" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.31363332" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.38146406" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.20617865" />
       <window_info id="Captures" order="2" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23446894" />
       <window_info id="Learn" order="2" />
@@ -361,7 +357,14 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="5" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/main.dart</url>
+          <line>45</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="7" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -369,23 +372,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/android/app/google-services.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pubspec.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/android/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="9" column="77" selection-start-line="9" selection-start-column="77" selection-end-line="9" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/main.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
@@ -627,13 +613,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/dev/flutter/.pub-cache/hosted/pub.dartlang.org/googleapis-0.50.2/lib/vision/v1.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="864">
-          <caret line="32" column="23" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/httpclient.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -703,9 +682,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/dev/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth-0.5.10/lib/firebase_auth.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="246" column="53" selection-start-line="246" selection-start-column="53" selection-end-line="246" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/dev/flutter/packages/flutter/lib/src/widgets/image.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="122" column="8" selection-start-line="122" selection-start-column="8" selection-end-line="122" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$USER_HOME$/dev/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in-3.0.3+1/lib/google_sign_in.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1585">
+        <state relative-caret-position="93">
           <caret line="74" column="2" selection-start-line="74" selection-start-column="2" selection-end-line="74" selection-end-column="2" />
         </state>
       </provider>
@@ -717,17 +710,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/dev/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth-0.5.10/lib/firebase_auth.dart">
+    <entry file="file://$USER_HOME$/dev/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.11.3+16/lib/src/io_client.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="246" column="53" selection-start-line="246" selection-start-column="53" selection-end-line="246" selection-end-column="53" />
+        <state relative-caret-position="309">
+          <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/dev/flutter/.pub-cache/hosted/pub.dartlang.org/googleapis-0.50.2/lib/vision/v1.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3182">
+          <caret line="1414" column="6" selection-start-line="1414" selection-start-column="6" selection-end-line="1414" selection-end-column="6" />
+          <folding>
+            <element signature="e#2194#2959#0" />
+            <element signature="e#7878#9373#0" />
+            <element signature="e#10284#11020#0" />
+            <element signature="e#11067#13669#0" />
+            <element signature="e#13748#14350#0" />
+            <element signature="e#18499#20234#0" />
+            <element signature="e#20379#21359#0" />
+            <element signature="e#21456#22688#0" />
+            <element signature="e#22795#23412#0" />
+            <element signature="e#23486#24387#0" />
+            <element signature="e#24462#25507#0" />
+            <element signature="e#25582#26447#0" />
+            <element signature="e#26539#27183#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/dev/flutter/packages/flutter/lib/src/services/message_codecs.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="482">
+          <caret line="546" column="6" selection-start-line="546" selection-start-column="6" selection-end-line="546" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/main.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="55" column="26" selection-start-line="55" selection-start-column="26" selection-end-line="55" selection-end-column="26" />
+        <state relative-caret-position="213">
+          <caret line="45" column="7" selection-start-line="45" selection-start-column="7" selection-end-line="45" selection-end-column="7" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>

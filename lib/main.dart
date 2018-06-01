@@ -17,6 +17,7 @@ Future<Null> main() async {
     scopes: [
       'email',
       'https://www.googleapis.com/auth/contacts.readonly',
+      'https://www.googleapis.com/auth/cloud-vision'
     ],
   );
 
@@ -30,15 +31,23 @@ Future<Null> main() async {
   print("signed in " + user.displayName);
 
   var authHeaders = await googleUser.authHeaders;
-  final httpClient = new GoogleHttpClient(authHeaders);
   var visionApi = vision.VisionApi(new GoogleHttpClient(authHeaders));
   var imp = visionApi.images;
-  var res = await imp.annotate(vision.BatchAnnotateImagesRequest());
-//  res.responses.forEach((r) {
-//    r.textAnnotations.forEach((txt) {
-//      print(txt.description);
-//    });
-//  });
+  var request = vision.AnnotateImageRequest()
+  ..features = [vision.Feature()..type = "DOCUMENT_TEXT_DETECTION"];
+  var imageSource = vision.ImageSource()
+  ..gcsImageUri = "gs://bucket-name-123/abbey_road.jpg";
+  var image = vision.Image()
+  ..source = imageSource;
+  request.image = image;
+  var annotateRequest = vision.BatchAnnotateImagesRequest()
+    ..requests = [request];
+  var res = await imp.annotate(annotateRequest);
+  res?.responses?.forEach((r) {
+    r.textAnnotations.forEach((txt) {
+      print(txt.description);
+    });
+  });
   runApp(new MaterialApp(
     title: 'FoodyV',
     home: new FirstScreen(user?.displayName),
