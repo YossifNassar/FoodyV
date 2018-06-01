@@ -174,8 +174,6 @@ class _CameraAppState extends State<CameraApp> {
     return
       new Scaffold(
         appBar: new AppBar(
-          actions: <Widget>[new IconButton(icon: new Icon(Icons.photo),
-              onPressed: _navigateToImageScreen)],
           title: new Text("$loggedUser"),
         ),
         body: new Center(
