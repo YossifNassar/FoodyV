@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "27302019094",
+    "firebase_url": "https://foodyv-205313.firebaseio.com",
+    "project_id": "foodyv-205313",
+    "storage_bucket": "foodyv-205313.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:27302019094:android:4ce7cf5e92ca85a1",
+        "android_client_info": {
+          "package_name": "com.foodyv.foodyv"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "27302019094-8crai89u3cq8dv6u8c70cjc8qfe5vfsv.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "27302019094-8crai89u3cq8dv6u8c70cjc8qfe5vfsv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVDqBEyvKDqSqiqA4PgcmLmtUyeI4i-E4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

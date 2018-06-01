@@ -11,6 +11,10 @@ dependencies:
   camera: "^0.2.0"
   path_provider: "^0.4.0"
   video_player: "0.5.2"
+  googleapis_auth: "^0.2.5"
+  googleapis: "^0.50.2"
+  google_sign_in: "^3.0.3+1"
+  firebase_auth: "^0.5.10"
 
 dev_dependencies:
   flutter_test:
@@ -20,7 +24,7 @@ dev_dependencies:
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
 
-# The following section is specific to Flutter.
+# The following section ims specific to Flutter.
 flutter:
 
   # The following line ensures that the Material Icons font is

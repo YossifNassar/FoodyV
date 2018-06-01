@@ -3,36 +3,84 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:googleapis/vision/v1.dart' as vision;
+import 'httpclient.dart';
+import 'package:google_sign_in/google_sign_in.dart'
+    show GoogleSignIn;
+import 'package:firebase_auth/firebase_auth.dart';
 
 List<CameraDescription> cameras;
 
 Future<Null> main() async {
   cameras = await availableCameras();
+  final _googleSignIn = new GoogleSignIn(
+    scopes: [
+      'email',
+      'https://www.googleapis.com/auth/contacts.readonly',
+    ],
+  );
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  var googleUser = await _googleSignIn.signIn();
+  var googleAuth = await googleUser.authentication;
+  var user = await _auth.signInWithGoogle(
+    accessToken: googleAuth.accessToken,
+    idToken: googleAuth.idToken,
+  );
+  print("signed in " + user.displayName);
+
+  var authHeaders = await googleUser.authHeaders;
+  final httpClient = new GoogleHttpClient(authHeaders);
+  var visionApi = vision.VisionApi(new GoogleHttpClient(authHeaders));
+  var imp = visionApi.images;
+  var res = await imp.annotate(vision.BatchAnnotateImagesRequest());
+//  res.responses.forEach((r) {
+//    r.textAnnotations.forEach((txt) {
+//      print(txt.description);
+//    });
+//  });
   runApp(new MaterialApp(
     title: 'FoodyV',
-    home: new FirstScreen(),
+    home: new FirstScreen(user?.displayName),
   ));
 }
 
 class FirstScreen extends StatelessWidget {
+  String _loggedUser;
+  FirstScreen(String loggedUser) {
+    this._loggedUser = loggedUser;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return new CameraApp();
+    return new CameraApp(_loggedUser);
   }
 }
 
 class CameraApp extends StatefulWidget {
+  String loggedUser;
+  CameraApp(String loggedUser) {
+    this.loggedUser = loggedUser;
+  }
+
   @override
-  _CameraAppState createState() => new _CameraAppState();
+  _CameraAppState createState() => new _CameraAppState(loggedUser);
 }
 
 class _CameraAppState extends State<CameraApp> {
   CameraController controller;
   String _filePath;
+  String loggedUser;
+
+  _CameraAppState(String loggedUser) {
+    this.loggedUser = loggedUser;
+  }
 
   void _showCameraException(CameraException e) {
     print("${e.code}, ${e.description}");
   }
+
+  String timestamp() => new DateTime.now().millisecondsSinceEpoch.toString();
 
   void takePicture() async {
     if (!controller.value.isInitialized) {
@@ -42,7 +90,7 @@ class _CameraAppState extends State<CameraApp> {
     final Directory extDir = await getApplicationDocumentsDirectory();
     final String dirPath = '${extDir.path}/Pictures/flutter_test';
     await new Directory(dirPath).create(recursive: true);
-    final String filePath = '$dirPath/tmp.jpg';
+    final String filePath = '$dirPath/${timestamp()}.jpg';
 
     if (controller.value.isTakingPicture) {
       // A capture is already pending, do nothing.
@@ -108,7 +156,7 @@ class _CameraAppState extends State<CameraApp> {
         appBar: new AppBar(
           actions: <Widget>[new IconButton(icon: new Icon(Icons.photo),
               onPressed: _navigateToImageScreen)],
-          title: new Text('Foody Vision'),
+          title: new Text("$loggedUser"),
         ),
         body: new Center(
           child: new CameraPreview(controller),
