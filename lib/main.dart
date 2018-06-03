@@ -9,9 +9,12 @@ import 'package:google_sign_in/google_sign_in.dart'
     show GoogleSignIn;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart' show rootBundle,ByteData;
+import 'imagescreen.dart';
+import "package:googleapis_auth/auth_io.dart";
 
 List<CameraDescription> cameras;
 vision.VisionApi visionApi;
+AuthClient client;
 
 Future<ByteData> _getImageBytes(String image) async{
   return await rootBundle.load(image);
@@ -33,34 +36,56 @@ Future<Null> _annotateImage(String filePath) async {
       print(txt.description);
     });
   });
+
 }
 
 Future<Null> main() async {
   cameras = await availableCameras();
 
-  final _googleSignIn = new GoogleSignIn(
-    scopes: [
-      'email',
-      'https://www.googleapis.com/auth/contacts.readonly',
+//  final _googleSignIn = new GoogleSignIn(
+//    scopes: [
+//      'email',
+//      'https://www.googleapis.com/auth/contacts.readonly',
+//      'https://www.googleapis.com/auth/cloud-vision'
+//    ],
+//  );
+//  final FirebaseAuth _auth = FirebaseAuth.instance;
+//  var googleUser = await _googleSignIn.signIn();
+//  var googleAuth = await googleUser.authentication;
+//  var user = await _auth.signInWithGoogle(
+//    accessToken: googleAuth.accessToken,
+//    idToken: googleAuth.idToken,
+//  );
+//  print("signed in ${user.displayName}");
+//
+//
+//  var authHeaders = await googleUser.authHeaders;
+//  visionApi = vision.VisionApi(new GoogleHttpClient(authHeaders));
+
+  final accountCredentials = new ServiceAccountCredentials.fromJson({
+    //JSON
+  });
+  var scopes =  [
       'https://www.googleapis.com/auth/cloud-vision'
-    ],
-  );
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  var googleUser = await _googleSignIn.signIn();
-  var googleAuth = await googleUser.authentication;
-  var user = await _auth.signInWithGoogle(
-    accessToken: googleAuth.accessToken,
-    idToken: googleAuth.idToken,
-  );
-  print("signed in ${user.displayName}");
+    ];
 
+  var prompt = (String url) {
+    print("Please go to the following URL and grant access:");
+    print("  => $url");
+    print("");
+  };
 
-  var authHeaders = await googleUser.authHeaders;
-  visionApi = vision.VisionApi(new GoogleHttpClient(authHeaders));
+  client = await clientViaServiceAccount(accountCredentials, scopes).then((AuthClient client) {
+    // [client] is an authenticated HTTP client.
+    return client;
+  });
+
+  print("client: $client");
+  visionApi = vision.VisionApi(client);
 
   runApp(new MaterialApp(
     title: 'FoodyV',
-    home: new FirstScreen("User: ${user.displayName}"),
+    home: new FirstScreen("User: none"),
   ));
 }
 
@@ -163,6 +188,7 @@ class _CameraAppState extends State<CameraApp> {
   @override
   void dispose() {
     controller?.dispose();
+    client.close();
     super.dispose();
   }
 
@@ -181,32 +207,5 @@ class _CameraAppState extends State<CameraApp> {
         ),
         floatingActionButton: _cameraFloatingWidget(),
       );
-  }
-}
-
-class ImageScreen extends StatelessWidget {
-  final String filePath;
-  const ImageScreen({
-    Key key,
-    this.filePath
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    print(filePath);
-    Widget imageWidget;
-    if(filePath == null) {
-      imageWidget = new Text('Please take a photo');
-    } else {
-      imageWidget = new Image.file(new File(filePath));
-    }
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text("Image Screen"),
-      ),
-      body: new Center(
-        child: imageWidget,
-      ),
-    );
   }
 }
